@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List Widget</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="rocket-container">
+        <img id="rocket" src="rocket.png" alt="Rocket" />
+        <div id="rocket-fill" class="rocket-fill"></div>
+
+    </div>
+  <div class="todo-widget" id="todo-widget">
+    <div class="widget-header">
+      <span>To-Do List</span>
+      <button id="close-widget">&times;</button>
+    </div>
+    <div class="widget-body">
+      <div class="input-section">
+        <input type="text" id="todo-input" placeholder="Add a new task...">
+        <button id="add-btn">Add</button>
+    
+      </div>
+        <ul id="todo-list"></ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
