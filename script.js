@@ -113,43 +113,60 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.cursor = "default";
     });
   
-    // Pomodoro Timer Functions
-    function updatePomodoroDisplay() {
-      const minutes = Math.floor(timeLeft / 60).toString().padStart(2, "0");
-      const seconds = (timeLeft % 60).toString().padStart(2, "0");
-      pomodoroDisplay.textContent = `${minutes}:${seconds}`;
-    }
-  
-    function startPomodoro() {
-      if (pomodoroInterval) return; // Prevent multiple intervals
-      pomodoroInterval = setInterval(() => {
-        if (timeLeft > 0) {
-          timeLeft--;
-          updatePomodoroDisplay();
-        } else {
-          clearInterval(pomodoroInterval);
-          pomodoroInterval = null;
-          isWorkSession = !isWorkSession; // Toggle session
-          timeLeft = isWorkSession ? 25 * 60 : 5 * 60; // 25 min work, 5 min break
-          alert(isWorkSession ? "Work session complete! Time for a break." : "Break over! Time to work.");
-          updatePomodoroDisplay();
-        }
-      }, 1000);
-    }
-  
-    function resetPomodoro() {
-      clearInterval(pomodoroInterval);
-      pomodoroInterval = null;
-      isWorkSession = true;
-      timeLeft = 25 * 60; // Reset to work duration
-      updatePomodoroDisplay();
-    }
-  
-    // Pomodoro Button Event Listeners
-    pomodoroStartButton.addEventListener("click", startPomodoro);
-    pomodoroResetButton.addEventListener("click", resetPomodoro);
-  
-    // Initialize Pomodoro Display
-    updatePomodoroDisplay();
   });
-  
+
+
+
+// Pomodoro Timer Logic
+let timerInterval;
+let timeRemaining = 25 * 60; // 25 minutes in seconds
+let isRunning = false;
+
+const timerDisplay = document.getElementById('timer-display');
+const startBtn = document.getElementById('start-btn');
+const pauseBtn = document.getElementById('pause-btn');
+const resetBtn = document.getElementById('reset-btn');
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+function updateTimerDisplay() {
+  timerDisplay.textContent = formatTime(timeRemaining);
+}
+
+function startTimer() {
+  if (!isRunning) {
+    isRunning = true;
+    timerInterval = setInterval(() => {
+      if (timeRemaining > 0) {
+        timeRemaining--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timerInterval);
+        alert('Time is up! Take a break.');
+      }
+    }, 1000);
+  }
+}
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  timeRemaining = 25 * 60;
+  updateTimerDisplay();
+}
+
+startBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', resetTimer);
+
+// Initialize Timer Display
+updateTimerDisplay();
