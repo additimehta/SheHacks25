@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+
+
+
+
     <div class="rocket-container">
         <img id="rocket" src="rocket.png" alt="Rocket" />
         <div id="rocket-fill" class="rocket-fill"></div>
@@ -27,6 +32,21 @@
         <ul id="todo-list"></ul>
     </div>
   </div>
+
+  <div class="pomodoro-widget" id="pomodoro-widget">
+    <div class="pomodoro-header">
+      <h2>Pomodoro Timer</h2>
+    </div>
+    <div class="pomodoro-body">
+      <span id="time-display">25:00</span>
+      <div class="pomodoro-controls">
+        <button id="start-timer">Start</button>
+        <button id="pause-timer">Pause</button>
+        <button id="reset-timer">Reset</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

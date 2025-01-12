@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Fredoka:wdth,wght@75..125,300&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <title>Exploration Page</title>
     <link rel="stylesheet" href="style-exploration.css" />
   </head>
-  <h1>Let's Explore!</h1>
   <body>
-    <div class="sun"></div>
-    <div class="mercury"></div>
-    <div class="venus"></div>
-    <div class="earth">
-      <div class="moon"></div>
+    <div class="banner">
+        <div class="banner-content">
+          <h1>Mission Saturn</h1>
+          <p>Complete dreams with a mission </p>
+          <p> to get to Saturn ~</p></p>
+          <p>because life's better on Saturn </p>
+          <p>~ SW AR AM AN </p></p>
+        </div>
     </div>
-    <div class="mars"></div>
-    <div class="jupiter"></div>
-    <div class="saturn">
+
+    <div class="sun" data-name="Sun"></div>
+    <div class="mercury" data-name="Mercury"></div>
+    <div class="venus" data-name="Venus"></div>
+    <div class="earth" data-name="Earth">
+      <div class="moon" data-name="Moon"></div>
+    </div>
+    <div class="mars" data-name="Mars"></div>
+    <div class="jupiter" data-name="Jupite"></div>
+    <div class="saturn" data-name="Saturn">
       <div class="ring1"></div>
       <div class="ring2"></div>
     </div>
-    <div class="uranus"></div>
-    <div class="neptune"></div>
+    <div class="uranus" data-name="Uranus"></div>
+    <div class="neptune" data-name="Neptune"></div>
+    <div id="tooltip" class="tooltip"></div>
+
 
 
 
     <div class="todo-widget" id="todo-widget">
         <div class="widget-header">
-          <span>To-Do List</span>
+          <span>Things to do</span>
           <button id="close-widget">&times;</button>
         </div>
         <div class="widget-body">
@@ -38,6 +52,10 @@
             <ul id="todo-list"></ul>
         </div>
       </div>
+
+
+    
+
     <script src="script.js"></script>
 
 
