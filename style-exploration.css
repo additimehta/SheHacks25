@@ -458,8 +458,9 @@ p {
 
 .pomodoro-widget {
   border-radius: 8px;
-  padding: 16px;
-  width: 200px;
+  padding: 15px;
+  width: 220px;
+  height: 250px;
   text-align: center;
   font-family: 'Fredoka', sans-serif;
   background-color:rgba(255, 255, 255, 0.8); 
@@ -496,3 +497,18 @@ p {
   background-color: #5848d8;
 }
 
+
+.pomodoro-widget label {
+  display: block;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.pomodoro-widget input[type="number"] {
+  width: 80%;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

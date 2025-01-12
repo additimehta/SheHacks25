@@ -119,9 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Pomodoro Timer Logic
 let timerInterval;
-let timeRemaining = 25 * 60; // 25 minutes in seconds
+let timeRemaining; // Dynamic based on user input
 let isRunning = false;
 
+const focusInput = document.getElementById('focus-time');
+const breakInput = document.getElementById('break-time');
 const timerDisplay = document.getElementById('timer-display');
 const startBtn = document.getElementById('start-btn');
 const pauseBtn = document.getElementById('pause-btn');
@@ -146,7 +148,18 @@ function startTimer() {
         updateTimerDisplay();
       } else {
         clearInterval(timerInterval);
-        alert('Time is up! Take a break.');
+        isRunning = false;
+
+        // Switch to break time
+        if (timerDisplay.textContent === formatTime(focusInput.value * 60)) {
+          alert('Focus time is over! Start your break.');
+          timeRemaining = breakInput.value * 60; // Set break time
+        } else {
+          alert('Break time is over! Ready to focus again?');
+          timeRemaining = focusInput.value * 60; // Reset to focus time
+        }
+
+        updateTimerDisplay();
       }
     }, 1000);
   }
@@ -160,13 +173,22 @@ function pauseTimer() {
 function resetTimer() {
   clearInterval(timerInterval);
   isRunning = false;
-  timeRemaining = 25 * 60;
+  timeRemaining = focusInput.value * 60; // Reset to focus time
   updateTimerDisplay();
 }
+
+// Initialize Timer
+focusInput.addEventListener('input', () => {
+  if (!isRunning) {
+    timeRemaining = focusInput.value * 60;
+    updateTimerDisplay();
+  }
+});
 
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
 
-// Initialize Timer Display
+// Set initial timer value
+timeRemaining = focusInput.value * 60;
 updateTimerDisplay();
